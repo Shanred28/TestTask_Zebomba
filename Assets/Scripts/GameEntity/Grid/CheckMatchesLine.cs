@@ -73,7 +73,16 @@ namespace GameEntity.Grid
             }
         }
 
-        private static Vector3 OverallCenter(List<LineMatch> lineMatches)
+        public bool HasMatches()
+        {
+            List<LineMatch> lineMatches = new List<LineMatch>();
+            CheckHorizontalMatches(lineMatches);
+            CheckVerticalMatches(lineMatches);
+            CheckDiagonalMatches(lineMatches);
+            return lineMatches.Count > 0;
+        }
+
+        private  Vector3 OverallCenter(List<LineMatch> lineMatches)
         {
             Vector3 overallCenter = Vector3.zero;
             int count = 0;

@@ -41,35 +41,22 @@ namespace GameEntity.Grid
         public void AttachCircle(CircleDropper circle)
         {
             Vector3 targetPos = _gridController.GetTargetPosition(circle.gameObject, out int chosenColumn, out int row);
+            
             if (chosenColumn == -1)
             {
-                OnEndedGame?.Invoke(EndGameAction.Result);
-                return;
-            }
-            
-            SnapToPositionTween(circle, targetPos, 1f, chosenColumn, row);
-        }
-
-        private void SnapToPositionTween(CircleDropper circle, Vector3 targetPos, float duration, int col, int row)
-        {
-            if (circle == null || circle.RbRigidbody2D == null)
-            {
-                Debug.LogWarning("Попытка запустить tween для несуществующего объекта");
-                return;
-            }
-
-            Rigidbody2D rb = circle.RbRigidbody2D;
-            rb.linearVelocity = Vector2.zero;
-            rb.bodyType = RigidbodyType2D.Kinematic;
-                
-            circle.transform.DOMove(targetPos, duration)
-                .SetEase(Ease.Linear)
-                .OnComplete(() =>
+                if (!_checkMatchesLine.HasMatches())
                 {
-                    _gridController.PlaceCircle(col, row, circle);
+                    OnEndedGame?.Invoke(EndGameAction.Result);
+                }
+                else
+                {
+                    StartCoroutine(CollapseColumns());
                     PendulumCircleSpawner.Instance.SpawnNewCircle();
-                    _checkMatchesLine.CheckMatches();
-                });
+                }
+                return;
+            }
+
+            SnapToPositionTween(circle, targetPos, 1f, chosenColumn, row);
         }
 
         public void AddScore(int points,Vector3 targetPos)
@@ -106,6 +93,44 @@ namespace GameEntity.Grid
                 _checkMatchesLine.CheckMatches();
                 yield return null;
             }
+        }
+
+        private void SnapToPositionTween(CircleDropper circle, Vector3 targetPos, float duration, int col, int row)
+        {
+            Rigidbody2D rb = circle.RbRigidbody2D;
+            rb.linearVelocity = Vector2.zero;
+            rb.bodyType = RigidbodyType2D.Kinematic;
+                
+            circle.transform.DOMove(targetPos, duration)
+                .SetEase(Ease.Linear)
+                .OnComplete(() =>
+                {
+                    _gridController.PlaceCircle(col, row, circle);
+                    _checkMatchesLine.CheckMatches();
+                   
+                   if (IsGridFull() && !_checkMatchesLine.HasMatches())
+                   {
+                       OnEndedGame?.Invoke(EndGameAction.Result);
+                       return;
+                   }
+                   PendulumCircleSpawner.Instance.SpawnNewCircle();
+                });
+        }
+
+        private bool IsGridFull()
+        {
+            CircleDropper[,] grid = _gridController.GetGrid();
+            int cols = grid.GetLength(0);
+            int rows = grid.GetLength(1);
+            for (int col = 0; col < cols; col++)
+            {
+                for (int row = 0; row < rows; row++)
+                {
+                    if (grid[col, row] == null)
+                        return false;
+                }
+            }
+            return true;
         }
     }
 }
