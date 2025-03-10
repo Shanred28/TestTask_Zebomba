@@ -1,0 +1,8 @@
+G:/Projectunity/TestTask_Zebomba/.utmp/RelWithDebInfo/1k1k1w33/arm64-v8a/CMakeFiles/edit_cache.dir
+G:/Projectunity/TestTask_Zebomba/.utmp/RelWithDebInfo/1k1k1w33/arm64-v8a/CMakeFiles/rebuild_cache.dir
+G:/Projectunity/TestTask_Zebomba/.utmp/RelWithDebInfo/1k1k1w33/arm64-v8a/GameActivity/CMakeFiles/game.dir
+G:/Projectunity/TestTask_Zebomba/.utmp/RelWithDebInfo/1k1k1w33/arm64-v8a/GameActivity/CMakeFiles/edit_cache.dir
+G:/Projectunity/TestTask_Zebomba/.utmp/RelWithDebInfo/1k1k1w33/arm64-v8a/GameActivity/CMakeFiles/rebuild_cache.dir
+G:/Projectunity/TestTask_Zebomba/.utmp/RelWithDebInfo/1k1k1w33/arm64-v8a/FramePacing/CMakeFiles/swappywrapper.dir
+G:/Projectunity/TestTask_Zebomba/.utmp/RelWithDebInfo/1k1k1w33/arm64-v8a/FramePacing/CMakeFiles/edit_cache.dir
+G:/Projectunity/TestTask_Zebomba/.utmp/RelWithDebInfo/1k1k1w33/arm64-v8a/FramePacing/CMakeFiles/rebuild_cache.dir

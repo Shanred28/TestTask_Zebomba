@@ -17,8 +17,10 @@ namespace GameEntity.Grid
         private const int GridSize = 3;
 
         [SerializeField] private float circleDiameter = 1f;
-        [Header("Настройки башен и стен")] 
-        [SerializeField] private  TowerLayoutConfigSO layoutConfig;
+
+        [Header("Настройки башен и стен")] [SerializeField]
+        private TowerLayoutConfigSO layoutConfig;
+
         [SerializeField] private ScoreManager scoreManager;
         [SerializeField] private ParticleSystem particleSystemForCircle;
 
@@ -26,14 +28,14 @@ namespace GameEntity.Grid
         private CheckMatchesLine _checkMatchesLine;
         private Camera _camera;
         private float _groundY;
-        
+
         void Start()
         {
             _camera = Camera.main;
             TowerLayout layout = new TowerLayout(_camera, layoutConfig);
             float[] columnCenters = layout.ColumnCenters;
             _groundY = _camera.transform.position.y - _camera.orthographicSize + (circleDiameter / 2f);
-            
+
             _gridController = new GridController(GridSize, circleDiameter, _groundY, columnCenters);
             _checkMatchesLine = new CheckMatchesLine(this, _gridController.GetGrid(), GridSize, GridSize);
         }
@@ -41,7 +43,7 @@ namespace GameEntity.Grid
         public void AttachCircle(CircleDropper circle)
         {
             Vector3 targetPos = _gridController.GetTargetPosition(circle.gameObject, out int chosenColumn, out int row);
-            
+
             if (chosenColumn == -1)
             {
                 if (!_checkMatchesLine.HasMatches())
@@ -53,18 +55,19 @@ namespace GameEntity.Grid
                     StartCoroutine(CollapseColumns());
                     PendulumCircleSpawner.Instance.SpawnNewCircle();
                 }
+
                 return;
             }
 
             SnapToPositionTween(circle, targetPos, 1f, chosenColumn, row);
         }
 
-        public void AddScore(int points,Vector3 targetPos)
+        public void AddScore(int points, Vector3 targetPos)
         {
-            scoreManager.AddScore(points,targetPos);
+            scoreManager.AddScore(points, targetPos);
         }
-
-        public void RemoveCircle(CircleDropper circ)
+        
+    public void RemoveCircle(CircleDropper circ)
         {
             ParticleSystem part = LeanPool.Spawn(particleSystemForCircle,circ.transform.position, Quaternion.identity);
             particleSystemForCircle.Play();

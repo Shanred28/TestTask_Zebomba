@@ -18,5 +18,8 @@ namespace SO
         [Tooltip("Процент высоты экрана для боковых стен")]
         [Range(0f, 1f)]
         public float sideWallHeightPercent = 0.5f;
+
+        public float circleDiameter = 1f;
+        public int towerCount = 3;
     }
 }

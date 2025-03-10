@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zoneHeightPercent: 0.3
   wallThickness: 0.3
-  towerSizeMultiplier: 3
+  towerSizeMultiplier: 2
   sideWallHeightPercent: 0.6
+  circleDiameter: 1
+  towerCount: 3

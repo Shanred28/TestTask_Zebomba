@@ -15,6 +15,8 @@ EditorBuildSettings:
     path: Assets/Scenes/GameScene.unity
     guid: efe2af831c631a04ca48610dafbe9822
   m_configObjects:
+    com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: 2e1c33d9ecac3bd4bbe70abd47492d53, type: 2}
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 01ed35b679be4154a8c4a6ea079a75c6, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 9f88a2830a0483e4faad34f3af8810f3, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
