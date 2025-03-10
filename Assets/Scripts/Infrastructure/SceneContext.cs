@@ -15,7 +15,6 @@ namespace Infrastructure
         
         protected override void Configure(IContainerBuilder builder)
         {
-            Debug.Log("SceneContext: Configure");
             RegisterLevelServices(builder);
             RegisterLevelStateMachine(builder);
         }

@@ -738,6 +738,7 @@ GameObject:
   - component: {fileID: 5480450322429322757}
   - component: {fileID: 6432629177153616255}
   - component: {fileID: 826442754737811754}
+  - component: {fileID: 6112418743607651542}
   m_Layer: 5
   m_Name: NewGameButton
   m_TagString: Untagged
@@ -847,6 +848,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6112418743607651542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6022487359153273615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 569acdb54fad21240aff65ffe5f8b538, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animatedButton: {fileID: 826442754737811754}
+  pulseScale: 1.1
+  pulseDuration: 0.5
 --- !u!1 &8408439950012124797
 GameObject:
   m_ObjectHideFlags: 0

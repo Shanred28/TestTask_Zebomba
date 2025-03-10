@@ -20,7 +20,6 @@ namespace Infrastructure.Services.GameStateMachine.GameState
     
         public void Enter()
         {
-            Debug.Log("LoadMainMenuGameState.Enter");
             _sceneLoader.Load("MainMenuScene", () =>
             {
                 InitializeScene();

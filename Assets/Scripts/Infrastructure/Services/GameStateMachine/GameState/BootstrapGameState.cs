@@ -17,13 +17,11 @@ namespace Infrastructure.Services.GameStateMachine.GameState
     
         public void Enter()
         {
-            Debug.Log("GLOBAL: Init");
             _configsProvider.Load();
             Application.targetFrameRate = 60;
         
             if (SceneManager.GetActiveScene().name == "BootstrapScene" || SceneManager.GetActiveScene().name == "MainMenuScene")
             {
-                Debug.Log("GLOBAL: LoadMainMenuGameState");
                 _gameStateSwitcher.EnterState<LoadMainMenuGameState>();
             }
         }
